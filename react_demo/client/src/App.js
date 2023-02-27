@@ -1,14 +1,40 @@
 import './App.css';
 
-function App() {
+import React, { useState, useEffect } from 'react';
+import { searchTitle, filterStreaming } from "./search.js";
+
+function App() { 
+
+  const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    console.log("change");
+  }, [data]);
+
+  const handleKeyDown = async (event) => {
+    if (event.key === 'Enter') {
+      setLoading(true);
+      const search = document.getElementById("searchInput").value;
+      const result = await searchTitle(search);
+      setData(result);
+      setLoading(false);
+    }
+  }
+
   return (
     <div>
       <div class="header">
         <div class="search">
-          {/* <img src={require('./magnifying.png')} alt="Magnifying glass icon" width="5%" height="5%"></img> */}
-          Search for a genre, title, etc.
+            <label>Search for a genre, title, etc.</label>
+            <input type="text" onKeyDown={handleKeyDown} id="searchInput"/>
         </div>
       </div>
+      {isLoading ? (
+        <p>loading...</p>
+      ) : (
+        data.map(result => <p>{result.title}</p>)
+      )}
     </div>
   );
 }
