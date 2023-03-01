@@ -1,10 +1,9 @@
 import './App.css';
 
 import React, { useState, useEffect } from 'react';
-import { searchTitle, filterStreaming } from "./search.js";
+import { searchTitle, filterStreaming } from "./find.js";
 
 function App() { 
-
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 

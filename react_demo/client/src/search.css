@@ -1,4 +1,4 @@
-ody {
+body {
   background-color: black;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -62,7 +62,7 @@ ody {
 }
 
 .search__element {
-  height: 30vh;
+  height: 25vh;
   display: flex;
   padding: 20px 0;
   align-items: center;
