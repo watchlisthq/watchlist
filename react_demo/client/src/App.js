@@ -1,9 +1,13 @@
-import './App.css';
+import "./App.css";
 
-import React, { useState, useEffect } from 'react';
+import ReactDOM from "react-dom";
+import { Carousel } from "@trendyol-js/react-carousel";
+import { Item } from "./yourItem";
+
+import React, { useState, useEffect } from "react";
 import { searchTitle, filterStreaming } from "./find.js";
 
-function App() { 
+function App() {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
@@ -12,14 +16,14 @@ function App() {
   }, [data]);
 
   const handleKeyDown = async (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       setLoading(true);
       const search = document.getElementById("searchInput").value;
       const result = await searchTitle(search);
       setData(result);
       setLoading(false);
     }
-  }
+  };
 
   return (
     <div>
@@ -40,23 +44,9 @@ function App() {
         <div class="main__title">
           <span class="title">Your Watchlist</span>
         </div>
-        <div class="main__carousel">
-          <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
-          </a>
-          <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
-          </a>
-          <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
-          </a>
-          <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
-          </a>
-          <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
-          </a>
-        </div>
+        <Carousel show={3.5} slide={2} transition={0.5}>
+          <Item></Item>
+        </Carousel>
         <div class="recommended__title">
           <span class="recommended">Recommended for you</span>
         </div>
@@ -78,11 +68,6 @@ function App() {
           </a>
         </div>
       </div>
-      {isLoading ? (
-        <p>loading...</p>
-      ) : (
-        data.map(result => <p>{result.title}</p>)
-      )}
     </div>
   );
 }
