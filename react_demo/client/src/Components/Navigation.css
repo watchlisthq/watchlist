@@ -1,39 +1,37 @@
 #searchInput {
+  background: url(../images/search.png) no-repeat scroll 7px 7px;
+  background-size: 30px;
+  padding-left: 50px;
   background-color: black;
   color: white;
   border: 1px solid white;
   height: 40px;
   width: 200px;
-  margin: 0 20px;
+  margin: 0 2.5%;
 }
 
 .navbar__container {
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: black;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 80px;
   width: 100%;
-  margin: 0 auto;
-}
-
-.navbar__container.fixed-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
 }
 
 .navbar__link {
   text-decoration: none;
   color: white;
   font-size: 20px;
-  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .navbar__logo {
   margin-left: auto;
-  margin-right: 15px;
+  margin-right: 2.5%;
   text-decoration: none;
   font-size: 40px;
   font-weight: bold;

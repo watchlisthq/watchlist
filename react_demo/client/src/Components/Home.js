@@ -1,4 +1,4 @@
-import "./Home.css"
+import "./Home.css";
 
 export default function Home() {
   return (
@@ -12,22 +12,37 @@ export default function Home() {
         </div>
         <div class="recommended__carousel">
           <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
+            <img
+              src={require("../images/temp.png")}
+              class="carousel__images"
+            ></img>
           </a>
           <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
+            <img
+              src={require("../images/temp.png")}
+              class="carousel__images"
+            ></img>
           </a>
           <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
+            <img
+              src={require("../images/temp.png")}
+              class="carousel__images"
+            ></img>
           </a>
           <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
+            <img
+              src={require("../images/temp.png")}
+              class="carousel__images"
+            ></img>
           </a>
           <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
+            <img
+              src={require("../images/temp.png")}
+              class="carousel__images"
+            ></img>
           </a>
         </div>
       </div>
     </div>
-  )
+  );
 }
