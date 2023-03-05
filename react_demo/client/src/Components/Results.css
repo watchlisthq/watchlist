@@ -1,4 +1,4 @@
-.search__container {
+.results__container {
   color: white;
   max-width: 1400px;
   width: 100%;
@@ -8,30 +8,30 @@
   flex-direction: column;
 }
 
-.search__element {
+.results__element {
   height: 25vh;
   display: flex;
   padding: 20px 0;
   align-items: center;
 }
 
-.search__image {
+.results__image {
   width: 30%;
   text-align: center;
 }
 
-.search__inner {
+.results__inner {
   width: 70%;
   display: flex;
   flex-direction: column;
 }
 
-.search__title {
+.results__title {
   margin-bottom: 15px;
   font-size: 60px;
   font-weight: bolder;
 }
 
-.search__description {
+.results__description {
   font-size: 18px;
 }

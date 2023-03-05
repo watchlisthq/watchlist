@@ -2,7 +2,7 @@ import "./Results.css";
 
 export default function Results(props) {
   return (
-    <div class="search__container">
+    <div class="results__container">
         {props.query.map(element => 
           <Result 
             image={element.backdropURLs.original} 
@@ -15,13 +15,13 @@ export default function Results(props) {
 
 function Result(props) {
   return (
-    <div class="search__element">
-      <div class="search__image">
+    <div class="results__element">
+      <div class="results__image">
         <img src={props.image} alt="poster" width="331" height="auto"></img>
         </div>
-      <div class="search__inner">
-        <div class="search__title">{props.title}</div>
-        <div class="search__description">{props.description}</div>
+      <div class="results__inner">
+        <div class="results__title">{props.title}</div>
+        <div class="results__description">{props.description}</div>
       </div>
     </div>
   );

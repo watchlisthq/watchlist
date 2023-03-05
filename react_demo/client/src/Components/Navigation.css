@@ -8,23 +8,20 @@
 }
 
 .navbar__container {
+  background-color: black;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 80px;
-  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
-  transition: all 0.3s ease-out;
 }
 
 .navbar__container.fixed-top {
   position: fixed;
   top: 0;
-  left: 50%;
-  margin-left: -700px;
+  left: 0;
   z-index: 100;
-  background-color: black;
 }
 
 .navbar__link {
@@ -36,6 +33,7 @@
 
 .navbar__logo {
   margin-left: auto;
+  margin-right: 15px;
   text-decoration: none;
   font-size: 40px;
   font-weight: bold;
