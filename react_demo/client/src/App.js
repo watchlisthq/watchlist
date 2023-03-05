@@ -2,7 +2,6 @@ import "./App.css";
 
 import ReactDOM from "react-dom";
 import { Carousel } from "@trendyol-js/react-carousel";
-import { Item } from "./yourItem";
 
 import React, { useState, useEffect } from "react";
 import { searchTitle, filterStreaming } from "./find.js";
@@ -25,6 +24,14 @@ function App() {
     }
   };
 
+  document.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar__container");
+    const navbarHeight = 80;
+    const distanceFromTop = Math.abs(document.body.getBoundingClientRect().top);
+    if (distanceFromTop >= navbarHeight) navbar.classList.add("fixed-top");
+    else navbar.classList.remove("fixed-top");
+  });
+
   return (
     <div>
       <div class="navbar__container">
@@ -44,9 +51,6 @@ function App() {
         <div class="main__title">
           <span class="title">Your Watchlist</span>
         </div>
-        <Carousel show={3.5} slide={2} transition={0.5}>
-          <Item></Item>
-        </Carousel>
         <div class="recommended__title">
           <span class="recommended">Recommended for you</span>
         </div>
