@@ -32,16 +32,10 @@
 
 .results__title {
   margin-bottom: 15px;
-  font-size: 60px;
+  font-size: 50px;
   font-weight: bolder;
 }
 
-.results__inner button {
-  background-color: #1d1d1d;
-  border: none;
-  margin-left: auto;
-}
-
 .results__description {
-  font-size: 18px;
+  font-size: 15px;
 }

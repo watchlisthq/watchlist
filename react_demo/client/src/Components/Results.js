@@ -1,5 +1,7 @@
 import "./Results.css";
 
+import Button from "./Button"
+
 export default function Results(props) {
   return (
     <div class="results__container">
@@ -7,16 +9,11 @@ export default function Results(props) {
         <Result 
           image={element.backdropURLs.original} 
           title={element.title} 
-          description={element.overview.split(" ").slice(0, 50).join(" ")}>
+          description={element.overview.split(" ").slice(0, 50).join(" ")}
+          data={element}>
         </Result>)}
     </div>
   );
-}
-
-function addTitle() {
-  var img = document.getElementById("buttonImage");
-  img.src = `{require("../images/check-title.png")}`;
-  return false;
 }
 
 function Result(props) {
@@ -30,9 +27,7 @@ function Result(props) {
           <div class="results__title">{props.title}</div>
           <div class="results__description">{props.description}</div>
         </div>
-        <button id="buttonImage" onclick="addTitle()">
-          <img id="buttonImage" src={require("../images/add-title.png")}></img>
-        </button>
+        <Button data={props.data}/>
       </div>
     </div>
   );

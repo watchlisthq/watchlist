@@ -26,7 +26,13 @@ const images = [
   "https://images.unsplash.com/photo-1550064824-8f993041ffd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 ];
 
-export default function Slides({ deviceType }) {
+export default function Slides(props, { deviceType }) {
+  console.log(props)
+
+  let data = props.data.map(title => 
+    title.backdropURLs.original
+  )
+
   return (
     <Carousel
       ssr
@@ -35,7 +41,7 @@ export default function Slides({ deviceType }) {
       responsive={responsive}
       partialVisbile={true}
     >
-      {images.slice(0, 10).map(image => {
+      {data.map(image => {
         return (
           <img
           className="carousel__images"
