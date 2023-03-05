@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 
-import Home from "./Components/Home"
-import Navigation from "./Components/Navigation"
-import Results from "./Components/Results"
-
+import Home from "./Components/Home";
+import Navigation from "./Components/Navigation";
+import Results from "./Components/Results";
 
 function App() {
   const [data, setData] = useState(null);
@@ -11,13 +10,8 @@ function App() {
 
   return (
     <div>
-      <Navigation onData={setData} onSearch={setSearching}/>
-      {!isSearching ? 
-      (
-        <Home/>
-      ) : (
-        <Results query={data}/>
-      )}
+      <Navigation onData={setData} onSearch={setSearching} />
+      {!isSearching ? <Home /> : <Results query={data} />}
     </div>
   );
 }

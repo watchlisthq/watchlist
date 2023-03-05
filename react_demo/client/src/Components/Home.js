@@ -1,4 +1,4 @@
-import "./Home.css"
+import "./Home.css";
 
 import Slides from "./Slides"
 
@@ -20,5 +20,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }
