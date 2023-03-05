@@ -1,0 +1,45 @@
+#searchInput {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  height: 40px;
+  width: 200px;
+  margin: 0 20px;
+}
+
+.navbar__container {
+  background-color: black;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 10vh;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.navbar__link {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  margin-left: 3%;
+}
+
+.navbar__logo {
+  margin-left: auto;
+  text-decoration: none;
+  font-size: 40px;
+  font-weight: bold;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(212, 252, 255, 1) 0%,
+    rgba(106, 225, 235, 1) 25%,
+    rgba(0, 198, 215, 1) 50%,
+    rgba(0, 159, 172, 1) 75%,
+    rgba(0, 119, 129, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
