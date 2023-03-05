@@ -1,5 +1,7 @@
 import "./Home.css"
 
+import Slides from "./Slides"
+
 export default function Home() {
   return (
     <div>
@@ -7,25 +9,14 @@ export default function Home() {
         <div class="main__title">
           <span class="title">Your Watchlist</span>
         </div>
+        <div class="main__carousel">
+          <Slides/>
+        </div>
         <div class="recommended__title">
           <span class="recommended">Recommended for you</span>
         </div>
         <div class="recommended__carousel">
-          <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
-          </a>
-          <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
-          </a>
-          <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
-          </a>
-          <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
-          </a>
-          <a href="">
-            <img src={require("./temp.png")} class="carousel__images"></img>
-          </a>
+          <Slides/>
         </div>
       </div>
     </div>

@@ -9,14 +9,6 @@ function App() {
   const [data, setData] = useState(null);
   const [isSearching, setSearching] = useState(false);
 
-  document.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".navbar__container");
-    const navbarHeight = 80;
-    const distanceFromTop = Math.abs(document.body.getBoundingClientRect().top);
-    if (distanceFromTop >= navbarHeight) navbar.classList.add("fixed-top");
-    else navbar.classList.remove("fixed-top");
-  });
-
   return (
     <div>
       <Navigation onData={setData} onSearch={setSearching}/>

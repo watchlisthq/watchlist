@@ -1,0 +1,16 @@
+.main__carousel {
+  height: 30%;
+  align-items: center;
+  text-align: center;
+}  
+
+.recommended__carousel {
+  height: 30%;
+  align-items: center;
+  text-align: center;
+}
+
+.carousel__images {
+  width: 90%;
+  border-radius: 10px;
+}
