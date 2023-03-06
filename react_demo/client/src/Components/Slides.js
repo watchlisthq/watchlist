@@ -21,17 +21,32 @@ export default function Slides(props) {
 
   useEffect(() => {
     if (render === true) rerender(false);
-  }, [render])
+  }, [render]);
 
   const handleDelete = (event) => {
     let newSave = props.watchlist;
-    let filteredArray = newSave.data.filter((e) => 
-      e.imdbId !== event.target.id
-    )
+    let filteredArray = newSave.data.filter(
+      (e) => e.imdbId !== event.target.id
+    );
     newSave.data = filteredArray;
     rerender(true);
     props.onSave(newSave);
-  }
+  };
+
+  const getLink = (event) => {
+    let newSave = props.watchlist;
+    let filteredArray = newSave.data.filter((e) => e.imdbId == event.target.id);
+
+    if (filteredArray[0].streamingInfo.hasOwnProperty("us")) {
+      let streams = filteredArray[0].streamingInfo.us;
+      for (let service in streams) {
+        if (streams[service][0].hasOwnProperty("link")) {
+          window.open(streams[service][0].link, "_blank");
+          return;
+        }
+      }
+    }
+  };
 
   return (
     <Carousel
@@ -58,14 +73,16 @@ export default function Slides(props) {
               }}
             ></img>
             <button>
-              <img 
-                alt="close" 
+              <img
+                alt="close"
                 src={require("../images/close.png")}
                 id={title.imdbId}
-                onMouseDown={handleDelete}>
-                </img>
+                onMouseDown={handleDelete}
+              ></img>
             </button>
-            <div class="inner__title">{title.title.slice(0, 25)}</div>
+            <div class="inner__title" id={title.imdbId} onMouseDown={getLink}>
+              {title.title.slice(0, 25)}
+            </div>
           </div>
         );
       })}
