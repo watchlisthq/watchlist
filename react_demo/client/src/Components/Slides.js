@@ -1,6 +1,7 @@
 import "./Slides.css";
-
 import "react-multi-carousel/lib/styles.css";
+
+import React, { useState, useEffect } from "react";
 
 import Carousel from "react-multi-carousel";
 
@@ -12,17 +13,30 @@ const responsive = {
   },
 };
 
-export default function Slides(props, { deviceType }) {
+export default function Slides(props) {
   let data = [];
+  if (props.watchlist) data = props.watchlist.data;
 
-  if (props.data) {
-    data = props.data;
+  const [render, rerender] = useState(false);
+
+  useEffect(() => {
+    if (render === true) rerender(false);
+  }, [render])
+
+  const handleDelete = (event) => {
+    let newSave = props.watchlist;
+    let filteredArray = newSave.data.filter((e) => 
+      e.imdbId !== event.target.id
+    )
+    newSave.data = filteredArray;
+    rerender(true);
+    props.onSave(newSave);
   }
 
   return (
     <Carousel
       ssr
-      deviceType={deviceType}
+      deviceType={props.deviceType}
       itemClass="carousel__items"
       responsive={responsive}
       swipeable={true}
@@ -32,6 +46,7 @@ export default function Slides(props, { deviceType }) {
         return (
           <div class="container">
             <img
+              alt="poster"
               className="carousel__images"
               draggable={false}
               src={title.backdropURLs.original}
@@ -43,7 +58,12 @@ export default function Slides(props, { deviceType }) {
               }}
             ></img>
             <button>
-              <img src={require("../images/close.png")}></img>
+              <img 
+                alt="close" 
+                src={require("../images/close.png")}
+                id={title.imdbId}
+                onMouseDown={handleDelete}>
+                </img>
             </button>
             <div class="inner__title">{title.title.slice(0, 25)}</div>
           </div>
