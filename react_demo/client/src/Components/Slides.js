@@ -26,19 +26,20 @@ export default function Slides(props) {
   const handleDelete = (event) => {
     let newSave = props.watchlist;
     let filteredArray = newSave.data.filter(
-      (e) => e.imdbId !== event.target.id
-    );
+      (e) => e.imdbId !== event.target.id);
     newSave.data = filteredArray;
     rerender(true);
     props.onSave(newSave);
   };
 
   const getLink = (event) => {
-    let newSave = props.watchlist;
-    let filteredArray = newSave.data.filter((e) => e.imdbId == event.target.id);
+    let filteredArray = props.watchlist.data.filter(
+      (e) => e.imdbId === event.target.id);
 
-    if (filteredArray[0].streamingInfo.hasOwnProperty("us")) {
-      let streams = filteredArray[0].streamingInfo.us;
+    filteredArray = filteredArray[0];
+
+    if (filteredArray.streamingInfo.hasOwnProperty("us")) {
+      let streams = filteredArray.streamingInfo.us;
       for (let service in streams) {
         if (streams[service][0].hasOwnProperty("link")) {
           window.open(streams[service][0].link, "_blank");
