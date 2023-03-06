@@ -4,4 +4,9 @@
   padding-right: 40px;
   background-color: #1d1d1d;
   border: none;
+  transition: 0.3s ease-in-out;
+}
+
+.buttonImage:hover {
+  transform: scale(1.5);
 }

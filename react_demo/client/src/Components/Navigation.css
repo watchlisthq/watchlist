@@ -6,8 +6,13 @@
   color: white;
   border: 1px solid white;
   height: 40px;
-  width: 200px;
+  width: 190px;
   margin: 0 2.5%;
+  transition: 0.4s ease-in-out;
+}
+
+#searchInput:focus {
+  width: 400px;
 }
 
 .navbar__container {
@@ -26,7 +31,13 @@
   text-decoration: none;
   color: white;
   font-size: 20px;
+  font-weight: bold;
   margin-right: 3%;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar__link:hover {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .navbar__logo {
@@ -47,4 +58,8 @@
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
+}
+
+.navbar__logo:hover {
+  opacity: 0.6;
 }
