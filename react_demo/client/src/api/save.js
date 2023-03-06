@@ -20,9 +20,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-//
-//
-//
 export async function readData() {
   let fetchData = async () => {
     let resp = await fetch("http://localhost:3000/save-data.json");
