@@ -35,7 +35,7 @@ export default function App() {
   return (
     <div>
       <Navigation onData={setData} onSearch={setSearching} />
-      {!isSearching ? <Home watchlist={save} Home genre1 = {genre1}/> 
+      {!isSearching ? <Home watchlist={save} genre1 = {genre1}/> 
       : <Results query={data} />}
     </div>
   );
