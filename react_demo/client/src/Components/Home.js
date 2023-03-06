@@ -1,7 +1,7 @@
 import { searchGenre } from "../api/find";
 import "./Home.css";
 
-import Slides from "./Slides"
+import Slides from "./Slides";
 
 export async function readGenre1() {
   let fetchData = async() => {
@@ -19,7 +19,7 @@ export default function Home(props) {
           <span class="title">Your Watchlist</span>
         </div>
         <div class="main__carousel">
-          <Slides data={props.watchlist.data}/>
+          <Slides data={props.watchlist.data} />
         </div>
         <div class="genre1-title">
           <span class="genre1">Drama</span>
