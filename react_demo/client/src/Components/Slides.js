@@ -12,13 +12,11 @@ const responsive = {
   },
 };
 
-const images = [];
-
 export default function Slides(props, { deviceType }) {
-  let data = images;
+  let data = [];
 
   if (props.data) {
-    data = props.data.map((title) => title.backdropURLs.original);
+    data = props.data;
   }
 
   return (
@@ -30,13 +28,13 @@ export default function Slides(props, { deviceType }) {
       swipeable={true}
       partialVisbile={true}
     >
-      {data.map((image) => {
+      {data.map((title) => {
         return (
           <div class="container">
             <img
               className="carousel__images"
               draggable={false}
-              src={image}
+              src={title.backdropURLs.original}
               style={{
                 marginLeft: "auto",
                 marginRight: "auto",
@@ -47,7 +45,7 @@ export default function Slides(props, { deviceType }) {
             <button>
               <img src={require("../images/close.png")}></img>
             </button>
-            <div class="inner__title">{props.tite}</div>
+            <div class="inner__title">{title.title.slice(0, 25)}</div>
           </div>
         );
       })}

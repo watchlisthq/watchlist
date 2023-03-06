@@ -1,5 +1,6 @@
 .main__carousel {
-  height: 23%;
+  max-height: 220px;
+  height: 21vh;
   align-items: center;
   text-align: center;
 }
@@ -10,10 +11,9 @@
   text-align: center;
 }
 
-.carousel__images {
+.container .carousel__images {
   padding: 30px;
   width: 80%;
-  border-radius: 4px;
   transition: 0.3s ease-in-out;
 }
 
@@ -50,9 +50,9 @@
   color: white;
   text-align: left;
   width: 90%;
-  font-size: 160%;
+  font-size: 1.25rem;
   font-weight: bold;
-  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.8);
+  text-shadow: 0px 0px 10px rgb(0, 0, 0), 0px 0px 20px rgb(0, 0, 0), 0px 0px 30px rgb(0, 0, 0);
   transition: opacity 0.2s ease-out;
 }
 

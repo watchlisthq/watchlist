@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { useAsync } from "react-async"
 
 import Home from "./Components/Home";
 import Navigation from "./Components/Navigation";
@@ -16,14 +15,17 @@ export default function App() {
     async function loadSave() {
       setSave(await readData());
     }
-    console.log("fired");
     loadSave();
   }, [])
 
   return (
     <div>
       <Navigation onData={setData} onSearch={setSearching} />
-      {!isSearching ? <Home watchlist={save}/> : <Results query={data} />}
+      {!isSearching ? 
+        <Home watchlist={save}/> 
+        : 
+        <Results query={data} watchlist={save} onSave={setSave}/>
+      }
     </div>
   );
 }
