@@ -31,7 +31,7 @@ export default function Navigation({ onData, onSearch }) {
         Movies
       </a>
       <p onMouseDown={stopSearch} class="navbar__logo">
-        watchlist
+        wl
       </p>
     </div>
   );
