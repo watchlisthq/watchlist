@@ -1,6 +1,6 @@
 import "./Home.css";
 
-import Slides from "./Slides"
+import Slides from "./Slides";
 
 export default function Home(props) {
   return (
@@ -10,13 +10,13 @@ export default function Home(props) {
           <span class="title">Your Watchlist</span>
         </div>
         <div class="main__carousel">
-          <Slides data={props.watchlist.data}/>
+          <Slides data={props.watchlist.data} />
         </div>
         <div class="recommended__title">
           <span class="recommended">Recommended for you</span>
         </div>
         <div class="recommended__carousel">
-          <Slides data={props.watchlist.data}/>
+          <Slides data={props.watchlist.data} />
         </div>
       </div>
     </div>
