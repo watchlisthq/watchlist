@@ -13,7 +13,7 @@ export default function Results(props) {
           title={element.title} 
           description={element.overview.split(" ").slice(0, 50).join(" ")}
           data={element}
-          save={props.watchlist}
+          watchlist={props.watchlist}
           onSave={props.onSave}>
         </Result>)}
     </div>
@@ -39,8 +39,8 @@ function Result(props) {
         </div>
         <Button 
           data={props.data} 
-          checked={containsTitle(props.data, props.save)}
-          save={props.save} 
+          checked={containsTitle(props.data, props.watchlist)}
+          watchlist={props.watchlist} 
           onSave={props.onSave}
           onRender={rerender}
           render={render}/>

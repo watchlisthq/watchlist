@@ -22,7 +22,7 @@ export default function App() {
     <div>
       <Navigation onData={setData} onSearch={setSearching} />
       {!isSearching ? 
-        <Home watchlist={save}/> 
+        <Home watchlist={save} onSave={setSave}/> 
         : 
         <Results query={data} watchlist={save} onSave={setSave}/>
       }

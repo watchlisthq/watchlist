@@ -2,7 +2,7 @@ import "./Button.css";
 
 export default function Button(props) {
   const addTitle = () => {
-    let newSave = props.save;
+    let newSave = props.watchlist;
     // Add title
     if (!props.checked) {
       newSave.data.push(props.data)
@@ -11,7 +11,7 @@ export default function Button(props) {
     }
     // Remove title
     else {
-      let filteredArray  = newSave.data.filter((e) => 
+      let filteredArray = newSave.data.filter((e) => 
         e.imdbId !== props.data.imdbId
       )
       newSave.data = filteredArray;
