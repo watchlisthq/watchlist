@@ -27,10 +27,13 @@ function Result(props) {
     if (render === true) rerender(false);
   }, [render])
 
+  let image = require("../images/poster.png")
+  if (props.image) image = props.image
+
   return (
     <div class="results__element">
       <div class="results__image">
-        <img src={props.image} alt="poster" width="75%" height="auto"></img>
+        <img src={image} alt="poster" width="75%" height="auto"></img>
         </div>
       <div class="results__inner">
         <div class="title__inner">
