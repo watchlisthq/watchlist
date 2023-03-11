@@ -23,9 +23,8 @@ export default function Slides(props) {
     if (render === true) rerender(false);
   }, [render]);
 
-
   const handleDelete = (event) => {
-    let newSave = props.list;
+    let newSave = {...props.list};
     let filteredArray = newSave.data.filter(
       (e) => e.imdbId !== event.target.id);
     newSave.data = filteredArray;

@@ -9,17 +9,10 @@ import { readRecs, searchGenre } from "./api/find";
 
 export default function App() {
   const [data, setData] = useState("");
-  const [save, setSave] = useState("");
-  const [recommended, setRecs] = useState("");
-  const [titles, setTitles] = useState("");
   const [isSearching, setSearching] = useState(false);
 
-
-  const [render, rerender] = useState(false);
-
-  useEffect(() => {
-    if (render === true) rerender(false);
-  }, [render]);
+  const [save, setSave] = useState(null);
+  const [titles, setTitles] = useState([]);
 
   useEffect(() => {
     async function loadSave() {
@@ -29,34 +22,21 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    async function loadRecs() {
-      setRecs(await readRecs(save.data));
+    async function chooseTitles() {
+      let genres = readRecs(save.data);
+      setTitles(await searchGenre(genres[Math.floor(Math.random() * genres.length)]));
     }
-    loadRecs();
+    chooseTitles();
   }, [save]);
 
   useEffect(() => {
-    async function chooseTitles() {
-      // let genres = recommended.slice(0, 1);
-      // let recs = [];
-      // genres.forEach(async genre => {
-      //   recs.push(await searchGenre(genre))
-      // })
-      // setTitles(recs);
-      setTitles(await searchGenre(recommended[0]));
-    }
-    chooseTitles();
-  }, [recommended]);
-
-  useEffect(() => {
-    console.log(titles);
-    rerender(true);
-  }, [titles]);
+    console.log(save)
+  }, [save]);
 
   return (
     <div>
       <Navigation onData={setData} onSearch={setSearching}/>
-      {!isSearching ? 
+      {!isSearching ?
         <Home watchlist={save} recs={titles} onSave={setSave}/> 
         : 
         <Results query={data} watchlist={save} onSave={setSave}/>

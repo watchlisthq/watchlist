@@ -3,7 +3,6 @@ import "./Home.css";
 import Slides from "./Slides";
 
 export default function Home(props) {
-  console.log(props.recs)
   return (
     <div>
       <div class="main__container">
