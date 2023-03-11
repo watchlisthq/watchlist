@@ -3,6 +3,7 @@ import "./Home.css";
 import Slides from "./Slides";
 
 export default function Home(props) {
+  console.log(props.recs)
   return (
     <div>
       <div class="main__container">
@@ -11,15 +12,19 @@ export default function Home(props) {
         </div>
         <div class="main__carousel">
           <Slides 
-            watchlist={props.watchlist}
-            onSave={props.onSave}/>
+            list={props.watchlist}
+            onSave={props.onSave}
+            closeable={true}
+          />
         </div>
-        <div class="recommended__title">
-          <span class="recommended">Recommended for you</span>
-        </div>
-        <div class="recommended__carousel">
-          <Slides watchlist={props.watchlist} />
-        </div>
+          <div class="recommended__title">
+            <span class="recommended">Recommended for you</span>
+          </div>
+          <div class="recommended__carousel">
+            <Slides
+              list={({ data: props.recs })}
+            />
+          </div>
       </div>
     </div>
   );

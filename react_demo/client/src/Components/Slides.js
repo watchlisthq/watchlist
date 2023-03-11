@@ -15,7 +15,7 @@ const responsive = {
 
 export default function Slides(props) {
   let data = [];
-  if (props.watchlist) data = props.watchlist.data;
+  if (props.list) data = props.list.data;
 
   const [render, rerender] = useState(false);
 
@@ -23,8 +23,9 @@ export default function Slides(props) {
     if (render === true) rerender(false);
   }, [render]);
 
+
   const handleDelete = (event) => {
-    let newSave = props.watchlist;
+    let newSave = props.list;
     let filteredArray = newSave.data.filter(
       (e) => e.imdbId !== event.target.id);
     newSave.data = filteredArray;
@@ -33,7 +34,7 @@ export default function Slides(props) {
   };
 
   const getLink = (event) => {
-    let filteredArray = props.watchlist.data.filter(
+    let filteredArray = props.list.data.filter(
       (e) => e.imdbId === event.target.id);
 
     filteredArray = filteredArray[0];
@@ -71,16 +72,18 @@ export default function Slides(props) {
                 marginRight: "auto",
                 display: "flex",
                 justifyContent: "center",
-              }}
-            ></img>
-            <button>
-              <img
+              }}>
+            </img>
+            { props.closeable &&
+              <button>
+                <img
                 alt="close"
                 src={require("../images/close.png")}
                 id={title.imdbId}
-                onMouseDown={handleDelete}
-              ></img>
-            </button>
+                onMouseDown={handleDelete}>
+                </img>
+              </button>
+            }
             <div class="inner__title" id={title.imdbId} onMouseDown={getLink}>
               {title.title.slice(0, 25)}
             </div>
