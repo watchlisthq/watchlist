@@ -61,11 +61,25 @@ export default function Slides(props) {
       {data.map((title) => {
         return (
           <div class="container">
-            <img
+            { title.backdropURLs.original ?
+              <img
+                alt="poster"
+                className="carousel__images"
+                draggable={false}
+                src={title.backdropURLs.original}
+                style={{
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  display: "flex",
+                  justifyContent: "center",
+                }}>
+              </img>
+              :
+              <img
               alt="poster"
               className="carousel__images"
               draggable={false}
-              src={title.backdropURLs.original}
+              src={require("../images/poster.png")}
               style={{
                 marginLeft: "auto",
                 marginRight: "auto",
@@ -73,6 +87,7 @@ export default function Slides(props) {
                 justifyContent: "center",
               }}>
             </img>
+            }
             { props.closeable &&
               <button>
                 <img

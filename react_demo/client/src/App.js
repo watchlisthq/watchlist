@@ -9,9 +9,9 @@ import { readRecs, searchGenre } from "./api/find";
 
 export default function App() {
   const [data, setData] = useState("");
-  const [isSearching, setSearching] = useState(false);
+  const [route, setRoute] = useState("home");
 
-  const [save, setSave] = useState(null);
+  const [save, setSave] = useState({data: []});
   const [titles, setTitles] = useState([]);
 
   useEffect(() => {
@@ -24,23 +24,32 @@ export default function App() {
   useEffect(() => {
     async function chooseTitles() {
       let genres = readRecs(save.data);
-      setTitles(await searchGenre(genres[Math.floor(Math.random() * genres.length)]));
+      genres.slice(0, 1).forEach(async (genre) => {
+        let newTitles = [...titles];
+        newTitles.unshift(await searchGenre(genre));
+        setTitles(newTitles);
+      });
     }
     chooseTitles();
-  }, [save]);
+  }, [save, route]);
 
-  useEffect(() => {
-    console.log(save)
-  }, [save]);
+
+  let result;
+
+  if (route === "home") {
+    result = <Home watchlist={save} recs={titles} onSave={setSave}/> 
+  } else if (route === "results") {
+    result = <Results query={data} watchlist={save} onSave={setSave}/>
+  } else if (route === "shows") {
+    result = "";
+  } else if (route === "movies") {
+    result = "";
+  }
 
   return (
     <div>
-      <Navigation onData={setData} onSearch={setSearching}/>
-      {!isSearching ?
-        <Home watchlist={save} recs={titles} onSave={setSave}/> 
-        : 
-        <Results query={data} watchlist={save} onSave={setSave}/>
-      }
+      <Navigation onData={setData} onRoute={setRoute}/>
+      {result}
     </div>
   );
 }

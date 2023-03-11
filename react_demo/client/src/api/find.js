@@ -25,7 +25,7 @@ export function searchGenre(genre, show_type) {
       genre: genre, 
       show_type: show_type, 
       country: 'us', 
-      services: 'netflix,hulu.addon.hbo',
+      services: 'netflix,prime.buy,hulu.addon.hbo,peacock.free',
       output_language: 'en' },
     headers: {
       'X-RapidAPI-Key': 'f1da698a20mshfdaf67f61741fe5p12600ajsn29fb5424de6b',

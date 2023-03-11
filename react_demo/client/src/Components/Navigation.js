@@ -2,18 +2,26 @@ import "./Navigation.css";
 
 import { searchTitle, filterStreaming } from "../api/find";
 
-export default function Navigation({ onData, onSearch }) {
+export default function Navigation({ onData, onRoute }) {
   const handleKeyDown = async (event) => {
     if (event.key === "Enter") {
       const search = document.getElementById("searchInput").value;
       const result = await searchTitle(search);
-      onSearch(true);
+      onRoute("results");
       onData(result);
     }
   };
 
-  const stopSearch = () => {
-    onSearch(false);
+  const goShows = () => {
+    onRoute("shows");
+  };
+
+  const goMovies = () => {
+    onRoute("movies");
+  };
+
+  const goHome = () => {
+    onRoute("home");
   };
 
   return (
@@ -24,15 +32,15 @@ export default function Navigation({ onData, onSearch }) {
         id="searchInput"
         placeholder="Search for a genre, title, etc."
       ></input>
-      <a href="" class="navbar__link">
+      <div onMouseDown={goShows} class="navbar__link">
         Shows
-      </a>
-      <a href="" class="navbar__link">
+      </div>
+      <div onMouseDown={goMovies} class="navbar__link">
         Movies
-      </a>
-      <p onMouseDown={stopSearch} class="navbar__logo">
+      </div>
+      <div onMouseDown={goHome} class="navbar__logo">
         watchlist
-      </p>
+      </div>
     </div>
   );
 }
