@@ -6,7 +6,7 @@ export function searchTitle(title) {
     url: 'https://streaming-availability.p.rapidapi.com/v2/search/title',
     params: { title: title, country: 'us', output_language: 'en' },
     headers: {
-      'X-RapidAPI-Key': 'f1da698a20mshfdaf67f61741fe5p12600ajsn29fb5424de6b',
+      'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
       'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
     }
   };
@@ -28,7 +28,7 @@ export function searchGenre(genre, show_type) {
       services: 'netflix,prime.buy,hulu.addon.hbo,peacock.free',
       output_language: 'en' },
     headers: {
-      'X-RapidAPI-Key': 'f1da698a20mshfdaf67f61741fe5p12600ajsn29fb5424de6b',
+      'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
       'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
     }
   };
