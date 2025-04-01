@@ -10,24 +10,26 @@ export default function Button(props) {
     }
     // Remove title
     else {
-      let filteredArray = newSave.data.filter((e) => 
-        e.imdbId !== props.data.imdbId
+      let filteredArray = newSave.data.filter(
+        (e) => e.imdbId !== props.data.imdbId
       );
       newSave.data = filteredArray;
       props.onSave(newSave);
       props.onRender(true);
     }
-  }
+  };
 
   return (
-      <button className="buttonImage"
-        id={props.data.imdbId}
-        onMouseDown={addTitle}>
-        { !props.checked && !props.render ?
-          <img src={require("../images/add-title.png")}></img>
-          :
-          <img src={require("../images/check-title.png")}></img>
-        }
-      </button>
-  )
+    <button
+      className="buttonImage"
+      id={props.data.imdbId}
+      onMouseDown={addTitle}
+    >
+      {!props.checked && !props.render ? (
+        <img src={require("../images/add-title.png")}></img>
+      ) : (
+        <img src={require("../images/check-title.png")}></img>
+      )}
+    </button>
+  );
 }

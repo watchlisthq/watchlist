@@ -24,9 +24,10 @@ export default function Slides(props) {
   }, [render]);
 
   const handleDelete = (event) => {
-    let newSave = {...props.list};
+    let newSave = { ...props.list };
     let filteredArray = newSave.data.filter(
-      (e) => e.imdbId !== event.target.id);
+      (e) => e.imdbId !== event.target.id
+    );
     newSave.data = filteredArray;
     rerender(true);
     props.onSave(newSave);
@@ -34,7 +35,8 @@ export default function Slides(props) {
 
   const getLink = (event) => {
     let filteredArray = props.list.data.filter(
-      (e) => e.imdbId === event.target.id);
+      (e) => e.imdbId === event.target.id
+    );
 
     filteredArray = filteredArray[0];
 
@@ -59,45 +61,52 @@ export default function Slides(props) {
       partialVisbile={true}
     >
       {data.map((title) => {
+        let lastBackdrop = undefined;
+        if (title.imageSet.horizontalBackdrop) {
+          const keys = Object.keys(title.imageSet.horizontalBackdrop);
+          const lastKey = keys[keys.length - 1];
+          lastBackdrop = title.imageSet.horizontalBackdrop[lastKey];
+        }
+
         return (
           <div class="container">
-            { title.backdropURLs.original ?
+            {lastBackdrop ? (
               <img
                 alt="poster"
                 className="carousel__images"
                 draggable={false}
-                src={title.backdropURLs.original}
+                src={lastBackdrop}
                 style={{
                   marginLeft: "auto",
                   marginRight: "auto",
                   display: "flex",
                   justifyContent: "center",
-                }}>
-              </img>
-              :
+                }}
+              ></img>
+            ) : (
               <img
-              alt="poster"
-              className="carousel__images"
-              draggable={false}
-              src={require("../images/poster.png")}
-              style={{
-                marginLeft: "auto",
-                marginRight: "auto",
-                display: "flex",
-                justifyContent: "center",
-              }}>
-            </img>
-            }
-            { props.closeable &&
+                alt="poster"
+                className="carousel__images"
+                draggable={false}
+                src={require("../images/poster.png")}
+                style={{
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              ></img>
+            )}
+            {props.closeable && (
               <button>
                 <img
-                alt="close"
-                src={require("../images/close.png")}
-                id={title.imdbId}
-                onMouseDown={handleDelete}>
-                </img>
+                  alt="close"
+                  src={require("../images/close.png")}
+                  id={title.imdbId}
+                  onMouseDown={handleDelete}
+                ></img>
               </button>
-            }
+            )}
             <div class="inner__title" id={title.imdbId} onMouseDown={getLink}>
               {title.title.slice(0, 25)}
             </div>

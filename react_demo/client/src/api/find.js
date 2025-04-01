@@ -1,47 +1,56 @@
-import axios from 'axios';
+import axios from "axios";
 
 export function searchTitle(title) {
   const options = {
-    method: 'GET',
-    url: 'https://streaming-availability.p.rapidapi.com/v2/search/title',
-    params: { title: title, country: 'us', output_language: 'en' },
+    method: "GET",
+    url: "https://streaming-availability.p.rapidapi.com/shows/search/title",
+    params: { title: title, country: "us", output_language: "en" },
     headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-      'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-    }
+      "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
+      "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+    },
   };
-  return axios.request(options).then(function (response) {
-    return response.data.result;
-  }).catch(function (error) {
-    console.error(error);
-  });
+  return axios
+    .request(options)
+    .then(function (response) {
+      return response.data;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
 }
 
 export function searchGenre(genre, show_type) {
   const options = {
-    method: 'GET',
-    url: 'https://streaming-availability.p.rapidapi.com/v2/search/basic',
-    params: { 
-      genre: genre, 
-      show_type: show_type, 
-      country: 'us', 
-      services: 'netflix,prime.buy,hulu.addon.hbo,peacock.free',
-      output_language: 'en' },
+    method: "GET",
+    url: "https://streaming-availability.p.rapidapi.com/shows/search/filters",
+    params: {
+      genres: genre,
+      show_type: show_type,
+      order_direction: "desc",
+      order_by: "rating",
+      country: "us",
+      catalogs: "netflix,prime.buy,hulu.addon.hbo,peacock.free",
+      output_language: "en",
+    },
     headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-      'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
-    }
+      "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
+      "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+    },
   };
-  return axios.request(options).then(function (response) {
-    return response.data.result;
-  }).catch(function (error) {
-    console.error(error);
-  });
+  return axios
+    .request(options)
+    .then(function (response) {
+      return response.data.shows;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
 }
 
 export function readRecs(result) {
   // Flatten array of genres
-  let genres = result.map(show => show.genres);
+  let genres = result.map((show) => show.genres);
   genres = genres.flat();
 
   // Reduce
@@ -51,14 +60,19 @@ export function readRecs(result) {
   }, {});
 
   // Sorting
-  genres = Object.keys(genres).map((key) => ({ times: genres[key], genre: key}));
-  genres = genres.sort((a,b) => b.times - a.times).map(show => show.genre);
-
+  genres = Object.keys(genres).map((key) => ({
+    times: genres[key],
+    genre: key,
+  }));
+  genres = genres.sort((a, b) => b.times - a.times).map((show) => show.genre);
   return genres;
 }
 
 export function filterStreaming(result, service) {
-  const filter = result.filter(show => show.streamingInfo.hasOwnProperty("us") && 
-    show.streamingInfo.us.hasOwnProperty(service));
+  const filter = result.filter(
+    (show) =>
+      show.streamingInfo.hasOwnProperty("us") &&
+      show.streamingInfo.us.hasOwnProperty(service)
+  );
   return filter;
 }

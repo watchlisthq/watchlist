@@ -11,7 +11,7 @@ export default function App() {
   const [data, setData] = useState("");
   const [route, setRoute] = useState("home");
 
-  const [save, setSave] = useState({data: []});
+  const [save, setSave] = useState({ data: [] });
   const [titles, setTitles] = useState([]);
 
   useEffect(() => {
@@ -33,13 +33,12 @@ export default function App() {
     chooseTitles();
   }, [save, route]);
 
-
   let result;
 
   if (route === "home") {
-    result = <Home watchlist={save} recs={titles} onSave={setSave}/> 
+    result = <Home watchlist={save} recs={titles} onSave={setSave} />;
   } else if (route === "results") {
-    result = <Results query={data} watchlist={save} onSave={setSave}/>
+    result = <Results query={data} watchlist={save} onSave={setSave} />;
   } else if (route === "shows") {
     result = "";
   } else if (route === "movies") {
@@ -48,7 +47,7 @@ export default function App() {
 
   return (
     <div>
-      <Navigation onData={setData} onRoute={setRoute}/>
+      <Navigation onData={setData} onRoute={setRoute} />
       {result}
     </div>
   );
