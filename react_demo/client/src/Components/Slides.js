@@ -39,12 +39,11 @@ export default function Slides(props) {
     );
 
     filteredArray = filteredArray[0];
-
-    if (filteredArray.streamingInfo.hasOwnProperty("us")) {
-      let streams = filteredArray.streamingInfo.us;
+    if (filteredArray.streamingOptions.hasOwnProperty("us")) {
+      let streams = filteredArray.streamingOptions.us;
       for (let service in streams) {
-        if (streams[service][0].hasOwnProperty("link")) {
-          window.open(streams[service][0].link, "_blank");
+        if (streams[service].hasOwnProperty("link")) {
+          window.open(streams[service].link, "_blank");
           return;
         }
       }
