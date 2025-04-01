@@ -7,25 +7,23 @@ export default function Home(props) {
     <div>
       <div class="main__container">
         <div class="main__title">
-          <span class="title">Your Watchlist</span>
+          <span class="title">Your WatchList</span>
         </div>
         <div class="main__carousel">
-          <Slides 
+          <Slides
             list={props.watchlist}
             onSave={props.onSave}
             closeable={true}
           />
         </div>
-          <div class="recommended__title">
-            <span class="recommended">Recommended for you</span>
+        <div class="recommended__title">
+          <span class="recommended">Recommended for you</span>
+        </div>
+        {props.recs.length != 0 && (
+          <div class="recommended__carousel">
+            <Slides list={{ data: props.recs[0] }} />
           </div>
-          { props.recs.length != 0 &&
-            <div class="recommended__carousel">
-              <Slides
-                list={({ data: props.recs[0] })}
-              />
-            </div>
-          }
+        )}
       </div>
     </div>
   );
